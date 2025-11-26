@@ -1,0 +1,111 @@
+﻿<Page x:Class="AdsService.PageViewAdsWithoutAuth"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdsService"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Просмотр объявлений без авторизации">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+            <TextBlock Text="Поиск объявлений: " FontSize="14" FontFamily="Tw Cen MT" Foreground="#FF37474F" Padding="10" Margin="5,0"/>
+            <TextBox x:Name="searchTextBox" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Height="30" Width="200" VerticalContentAlignment="Center" TextChanged="searchTextBox_TextChanged" Margin="5,0"/>
+            <TextBlock Text="Фильтрация по городу: " FontSize="14" FontFamily="Tw Cen MT" Foreground="#FF37474F" Padding="10" Margin="5,0"/>
+            <ComboBox SelectionChanged="cityFilter_SelectionChanged" x:Name="cityFilter" SelectedValuePath="id" SelectedValue="{Binding Path=city_name}" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Height="30" Width="200" VerticalContentAlignment="Center" Margin="5,0"/>
+            <TextBlock Text="Фильтрация по категории: " FontSize="14" FontFamily="Tw Cen MT" Foreground="#FF37474F" Padding="10" Margin="5,0"/>
+            <ComboBox SelectionChanged="categoryFilter_SelectionChanged" x:Name="categoryFilter" SelectedValuePath="id" SelectedValue="{Binding Path= category_name}" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Height="30" Width="200" VerticalContentAlignment="Center" Margin="5,0"/>
+            <TextBlock Text="Фильтрация по типу: " FontSize="14" FontFamily="Tw Cen MT" Foreground="#FF37474F" Padding="10" Margin="5,0"/>
+            <ComboBox SelectionChanged="typeFilter_SelectionChanged" x:Name="typeFilter" SelectedValuePath="id" SelectedValue="{Binding Path=type_name}" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Height="30" Width="200" VerticalContentAlignment="Center" Margin="5,0" />
+            <TextBlock Text="Фильтрация по статусу: " FontSize="14" FontFamily="Tw Cen MT" Foreground="#FF37474F" Padding="10" Margin="5,0"/>
+            <ComboBox SelectionChanged="statusFilter_SelectionChanged" x:Name="statusFilter" SelectedValuePath="id" SelectedValue="{Binding Path=status_name}" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Height="30" Width="200" VerticalContentAlignment="Center" Margin="5,0"/>
+            <Button x:Name="ClearFilters" Content="Очистить фильтры" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Background="#FF78909C" Padding="5" Height="30" Width="200" Margin="5,0" Click="ClearFilters_Click"/>
+        </WrapPanel>
+        
+        <ListView x:Name="ListAds" Grid.Row="1" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="16" Padding="10">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="9" Grid.Column="0" Stretch="Uniform" HorizontalAlignment="Center" Margin="16">
+                            <Image.Source>
+                                <Binding Path="ad_images">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>img_holder.png</ImageSource>   
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="{Binding ad_title}" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" FontFamily="Tw Cen MT" Foreground="#FF37474F" />
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FFFF9C1A">
+                           <Run Text="Цена: "/>
+                           <Run Text="{Binding ad_price}"/>
+                           <Run Text=" р."/>
+                        </TextBlock>
+                        
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Описание:"/>
+                        <Run Text="{Binding ad_description}"/>
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding ad_post_date, StringFormat='Дата публикации: {0:dd.MM.yyyy}'}" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Пользователь: "/>
+                        <Run Text="{Binding user.user_login}"/>
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Город: "/>
+                        <Run Text="{Binding city.city_name}"/>
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Категория: "/>
+                        <Run Text="{Binding category.category_name}" />
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Тип: "/>
+                        <Run Text="{Binding type.type_name}" />
+                        </TextBlock>
+
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Left" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF78909C">
+                        <Run Text="Статус: "/>
+                        <Run Text="{Binding status.status_name}" />
+                        </TextBlock>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
