@@ -16,26 +16,23 @@ using System.Windows.Shapes;
 namespace AdsService
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AddAdPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddAdPage : Page
     {
-        public MainWindow()
+        public AddAdPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new PageViewAdsWithoutAuth());
         }
 
-        private void BtBack_Click(object sender, RoutedEventArgs e)
+        private void BtSave_Click(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.CanGoBack)
-            {
-                MainFrame.GoBack();
-            }
-            else
-            {
-                MessageBox.Show("Нельзя вернуться назад!");
-            }
+
+        }
+
+        private void BtClear_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

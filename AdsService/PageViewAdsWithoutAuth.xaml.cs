@@ -109,5 +109,10 @@ namespace AdsService
             categoryFilter.SelectedValue= 0;
             statusFilter.SelectedValue = 0;
         }
+
+        private void BtAuth_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new AuthPage());
+        }
     }
 }

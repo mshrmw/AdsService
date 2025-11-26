@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdsService"
         mc:Ignorable="d"
-        Title="Сервис частных объявлений" Height="550" Width="900">
+        Title="Сервис частных объявлений" Height="650" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -19,5 +19,6 @@
         <Frame x:Name="MainFrame" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" Margin="16"/>
         <Image Grid.Row="0" Grid.Column="0" Source="/Лого.png" Height="38" Margin="16" Width="38" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label Content="Сервис частных объявлений" Grid.Row="0" Grid.Column="1" Margin="16" Height="38" FontFamily="Tw Cen MT" FontSize="14" FontWeight="Bold" Padding="10" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF37474F"/>
+        <Button x:Name="BtBack" Content="Назад" FontSize="12" FontFamily="Tw Cen MT" Foreground="#FF37474F" Background="#FF78909C" Padding="5" Height="30"  Width="150" Margin="16" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtBack_Click"/>
     </Grid>
 </Window>
