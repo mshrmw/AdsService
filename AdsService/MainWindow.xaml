@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdsService"
         mc:Ignorable="d"
-        Title="Сервис частных объявлений" Height="650" Width="900">
+        Title="Сервис частных объявлений" Height="650" Width="900" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
