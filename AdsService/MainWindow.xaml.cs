@@ -24,6 +24,7 @@ namespace AdsService
         {
             InitializeComponent();
             MainFrame.Navigate(new PageViewAdsWithoutAuth());
+
         }
 
         private void BtBack_Click(object sender, RoutedEventArgs e)

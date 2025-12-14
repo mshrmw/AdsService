@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1062aabb57ce4d7492e24632a6c47dbd" Name="Diagram1">
+      <Diagram DiagramId="88301d2ec6da4869bd6c69c41b628744" Name="Diagram1">
         <EntityTypeShape EntityType="PrivateAdsServiceModel.ad" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PrivateAdsServiceModel.category" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PrivateAdsServiceModel.city" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PrivateAdsServiceModel.status" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PrivateAdsServiceModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PrivateAdsServiceModel.type" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PrivateAdsServiceModel.user" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <AssociationConnector Association="PrivateAdsServiceModel.FK_ad_category" ManuallyRouted="false" />
